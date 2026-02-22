@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#formContainer{
+    position: absolute;
+    height: 500px;
+    width: 50%;
+    left: 50%;
+    top: 50%;
+   transform: translate(-50%,-50%);
+  border: 5px solid blue;
+  padding: 5px;
+  border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#formContainer label{
+font-size: 25px;
+display: block;
+}
+#formContainer label,input{
+text-align: center;
+position: relative;
+left: 50%;
+
+transform: translate(-50%);
+}
+#formContainer input:hover{
+border-color: red;
+border-radius: 5px;
+}
+#formContainer input:focus{
+ outline: none;
+border-color: greenyellow;
+border-radius: 8px;
+}
+#formContainer label{
+    margin-top: 20px;
+}
+#name,#tTittle{
+  height: 35px;
+  width: 280px;
+  font-size: 20px;
+}
+#tDescription{
+    width: 100%;
+height: 70px;
+text-align: left;
+
+}
+
+#addBTN{
+    padding: 5px 20px;
+   margin-top: 2px;
+   position: relative;
+   left: 45%;
+   background-color: black;
+   color: white;
+   border: 1px solid red;
+   border-radius: 15px;
+}
+#addBTN:hover{
+    background-color: #8e44ad;
+color: black;
+}
+
+@media ( max-width:306px) {
+        #formContainer{
+  width: 100%;
+  
+}
+#formContainer label{
+font-size: 15px;
+
+}
+#formContainer input{
+    width: 100%;
+}
+}
+@media (min-width:307px) and ( max-width:645px) {
+    #formContainer{
+  width: 100%;
+  
+}
+}

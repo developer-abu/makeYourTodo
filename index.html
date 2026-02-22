@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list hero section</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- add google font start -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Slabo+27px&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <!-- add google font end -->
+</head>
+<body>
+<!-- header section -->
+ <header>
+
+    <h1 id="heading">WelCome to <span>makeYourTodo</span></h1>
+    <button id="darkButton">Dark Mode</button>
+    <button id="lightButton">Dark Mode</button>
+    
+ </header>
+<!-- hero section -->
+ <section id="hero">
+<h2>Let's make your <span>todo list!</span></h2>
+<p>make your life <span>easy</span>by creating your next day plan. <span>make plan</span>, follow it and get <span>things done!</span></p>
+<button id="goToButton">Let's Start</button>
+ </section>
+
+ <script>
+// dark mode
+let darkButton = document.getElementById("darkButton");
+let heading = document.getElementById("heading");
+let hero = document.getElementById("hero");
+let lightButton = document.getElementById("lightButton");
+let gotoButton = document.querySelector("#goToButton")
+
+darkButton.addEventListener("click", ()=>{
+
+    heading.style.backgroundColor="#181C14";
+    hero.style.backgroundColor="#1D1616";
+ document.body.style.color="white"
+   
+})
+lightButton.addEventListener("click", ()=>{
+
+  heading.style.backgroundColor="#F6F09F";
+    hero.style.backgroundColor="#B35656";
+     document.body.style.color="black"
+
+})
+
+gotoButton.addEventListener("click",()=>{
+    window.location.href="main.html"
+})
+
+ </script>
+</body>
+</html>
