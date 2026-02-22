@@ -9,17 +9,74 @@
 <body>
 
 <div id="formContainer">
-<form action="">
+<form action="" id="formId">
 <label for="name">Enter Your Name</label><input type="text" id="name">
 <label for="cDate">Enter Date</label><input type="date" id="cDate">
 <label for="fDate">Enter Task Date to be completed within </label><input type="date" id="fDate">
 <label for="tTittle">Enter Your Task Tittle</label><input type="text" id="tTittle">
-<label for="tDescription">Enter Your Task Description</label><input type="text" id="tDescription" maxlength="50">
-<button id="addBTN">Add</button>
+<label for="tDescription">Enter Your Task Description</label><input type="text" id="tDescription" maxlength="150">
+<button id="addBTN" type="submit">Add</button>
+
+
+
+
  </form>
+
+ <table id="table">
+    <tr>
+        <th>Name</th>
+        <th>Current Date</th>
+        <th>Work to be completed within</th>
+        <th>Tittle</th>
+        <th>Description</th>
+      
+    </tr>
+</table>
+
 </div>
+ <button id="print">Print</button>
+ <button id="delete">Delete</button>
 
  <script>
+
+let userName= document.getElementById("name");
+let cDate= document.getElementById("cDate");
+let fDate= document.getElementById("fDate");
+let tTittle= document.getElementById("tTittle");
+let tDescription= document.getElementById("tDescription");
+let addBTN= document.getElementById("addBTN");
+let table = document.getElementById("table");
+let formId = document.querySelector("#formId");
+let print = document.querySelector("#print");
+let deleteBTN = document.getElementById("delete");
+let newRow;
+
+addBTN.addEventListener("click",(e)=>{
+    e.preventDefault();
+
+    newRow= document.createElement("tr");
+    if(userName.value.trim()==="" || !isNaN(userName.value.trim()) || cDate.value==="" || fDate.value==="" || tTittle.value.trim()==="" || tDescription.value.trim()==="") {
+alert("Your Input is not right! Please use string in Name and do not leave any form blank");
+window.location.href="main.html"
+    }else{
+    newRow.innerHTML=`<td>${userName.value.toUpperCase()}</td>
+    <td>${cDate.value}</td>
+    <td>${fDate.value}</td>
+    <td>${tTittle.value}</td>
+    <td>${tDescription.value}</td>`
+    table.appendChild(newRow)
+formId.reset();
+
+    }
+})
+
+
+print.addEventListener("click", ()=>{
+    window.print();
+})
+deleteBTN.addEventListener("click",()=>{
+   newRow.remove()
+})
 
  </script>
 </body>
