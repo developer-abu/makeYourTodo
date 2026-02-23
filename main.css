@@ -129,6 +129,20 @@ position: absolute;
    transform: translate(-60%);
 }
 
+#deleteLastRow{
+      padding: 5px 2px;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    border-color: red;
+    display: block;
+position: absolute;
+  margin-bottom: 25px;
+  bottom: 10%;
+  left: 55%;
+   transform: translate(-55%,-10%);
+}
+
 @media ( max-width:306px) {
         #formContainer{
   width: 100%;
@@ -147,6 +161,11 @@ font-size: 15px;
 #delete{
     right:10%;
 }
+#deleteLastRow{
+left: 50%;
+margin-bottom: -10px;
+}
+
 }
 
 
@@ -163,6 +182,8 @@ font-size: 15px;
     right:10%;
 }
 }
+
+
 @media print{
     #formId{
         display: none;
@@ -181,6 +202,9 @@ border: none;
         display: none;
     }
     #showingMassage{
+        display: none;
+    }
+    #deleteLastRow{
         display: none;
     }
 }

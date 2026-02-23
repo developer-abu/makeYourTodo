@@ -33,7 +33,7 @@
         <th>Work to be completed within</th>
         <th>Tittle</th>
         <th>Description</th>
-        <!-- <th id="deleteRow">Delete if needs</th> -->
+
         <th>Marks As Completed</th>
     </tr>
 </table>
@@ -41,6 +41,7 @@
 </div>
  <button id="print">Print</button>
  <button id="delete">Delete</button>
+ <button id="deleteLastRow">Delete Last Task</button>
 
  <script>
 
@@ -56,7 +57,8 @@ let print = document.querySelector("#print");
 let deleteBTN = document.getElementById("delete");
 let newRow;
 let row;
-let showingMassage= document.getElementById("showingMassage")
+let showingMassage = document.getElementById("showingMassage");
+let deleteLastRow = document.querySelector("#deleteLastRow");
 
 addBTN.addEventListener("click",(e)=>{
     e.preventDefault();
@@ -71,7 +73,7 @@ window.location.href="main.html"
     <td>${fDate.value}</td>
     <td>${tTittle.value}</td>
     <td>${tDescription.value}</td>
-    <!-- <td><button>Delete<button/></td> -->
+   
  <td><input type="checkbox"></td>`
     table.appendChild(newRow)
 
@@ -127,6 +129,7 @@ window.addEventListener("DOMContentLoaded", () => {
 table.addEventListener("change", (e) => {
 
     if (e.target.type === "checkbox") {
+          
 
         let row = e.target.closest("tr");
         let index = row.rowIndex - 1; // header বাদ
@@ -136,6 +139,7 @@ table.addEventListener("change", (e) => {
         tasks[index].completed = e.target.checked;
 
         localStorage.setItem("tasks", JSON.stringify(tasks));
+    
     }
 
 });
@@ -154,6 +158,16 @@ deleteBTN.addEventListener("click",()=>{
 
 showingMassage.addEventListener("click", ()=>{
     showingMassage.remove()
+})
+deleteLastRow.addEventListener("click", ()=>{
+    let tableRow= table.getElementsByTagName("tr")
+
+    if(tableRow.length===1){
+alert("Header Row Can not be Deleted");
+return
+    } {
+        table.deleteRow(tableRow.length-1)
+    }
 })
 
 </script>
