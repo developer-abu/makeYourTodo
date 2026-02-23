@@ -3,7 +3,27 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: #9b59b6;
+}
+#showingMassage{
+    height: 150px;
+    width: 150px;
+    background-color: black;
+    color: white;
+    margin: 20px;
+    padding: 2px;
+    position: absolute;
+    right: 50%;
+    z-index: 1;
+    border: 2px solid red;
+    border-radius: 15px;
+}
+#showingMassage p{
+font-weight: bold;
+padding: 10px;
 
+}
 #formContainer{
     position: absolute;
    
@@ -112,7 +132,6 @@ position: absolute;
 @media ( max-width:306px) {
         #formContainer{
   width: 100%;
-  
 }
 #formContainer label{
 font-size: 15px;
@@ -121,6 +140,12 @@ font-size: 15px;
 #formContainer input{
     width: 100%;
 
+}
+#print{
+    left: 10%;
+}
+#delete{
+    right:10%;
 }
 }
 
@@ -131,7 +156,12 @@ font-size: 15px;
   width: 100%;
   
 }
-
+#print{
+    left: 10%;
+}
+#delete{
+    right:10%;
+}
 }
 @media print{
     #formId{
@@ -145,6 +175,12 @@ border: none;
         display: none;
     }
     #delete{
+        display: none;
+    }
+    #deleteRow{
+        display: none;
+    }
+    #showingMassage{
         display: none;
     }
 }
