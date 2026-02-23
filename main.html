@@ -55,6 +55,7 @@ let formId = document.querySelector("#formId");
 let print = document.querySelector("#print");
 let deleteBTN = document.getElementById("delete");
 let newRow;
+let row;
 let showingMassage= document.getElementById("showingMassage")
 
 addBTN.addEventListener("click",(e)=>{
@@ -71,9 +72,24 @@ window.location.href="main.html"
     <td>${tTittle.value}</td>
     <td>${tDescription.value}</td>
     <!-- <td><button>Delete<button/></td> -->
- <td><input type="checkbox"></td> `
+ <td><input type="checkbox"></td>`
     table.appendChild(newRow)
+
+let task={
+    userName: userName.value.toUpperCase(),
+    cDate: cDate.value,
+    fDate: fDate.value,
+    tTittle: tTittle.value,
+    tDescription: tDescription.value,
+    completed: false 
+
+}
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+tasks.push(task);
+localStorage.setItem("tasks", JSON.stringify(tasks));
 formId.reset();
+
 
 
     }
@@ -83,9 +99,59 @@ formId.reset();
 print.addEventListener("click", ()=>{
     window.print();
 })
+
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    let savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    savedTasks.forEach(task => {
+
+ row = document.createElement("tr")
+
+        row.innerHTML = `
+        <td>${task.userName}</td>
+        <td>${task.cDate}</td>
+        <td>${task.fDate}</td>
+        <td>${task.tTittle}</td>
+        <td>${task.tDescription}</td>
+        <td><input type="checkbox" ${task.completed ? "checked" : ""}></td>`;
+
+        table.appendChild(row);
+
+    });
+
+});
+
+
+table.addEventListener("change", (e) => {
+
+    if (e.target.type === "checkbox") {
+
+        let row = e.target.closest("tr");
+        let index = row.rowIndex - 1; // header বাদ
+
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        tasks[index].completed = e.target.checked;
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+});
+
+
 deleteBTN.addEventListener("click",()=>{
-   newRow.remove()
+
+  localStorage.removeItem("tasks");
+  row.remove()
+
 })
+
+
+
+
+
 showingMassage.addEventListener("click", ()=>{
     showingMassage.remove()
 })
