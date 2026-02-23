@@ -8,15 +8,16 @@
 </head>
 <body>
 <div id="showingMassage">
+    
     <p>Please use Desktop if use mobile for better view.</p>
-    <p>Click Here to stop this massage</p>
+    <p>Click <span>&times;</span> to stop this massage</p>
 </div>
 
 <div id="formContainer">
 <form action="" id="formId">
 <label for="name">Enter Your Name</label><input type="text" id="name">
 <label for="cDate">Enter Date</label><input type="date" id="cDate">
-<label for="fDate">Enter Task Date to be completed within </label><input type="date" id="fDate">
+<label for="fDate">Complete By</label><input type="date" id="fDate">
 <label for="tTittle">Enter Your Task Tittle</label><input type="text" id="tTittle">
 <label for="tDescription">Enter Your Task Description</label><input type="text" id="tDescription" maxlength="150">
 <button id="addBTN" type="submit">Add</button>
@@ -129,10 +130,10 @@ window.addEventListener("DOMContentLoaded", () => {
 table.addEventListener("change", (e) => {
 
     if (e.target.type === "checkbox") {
-          
+
 
         let row = e.target.closest("tr");
-        let index = row.rowIndex - 1; // header বাদ
+        let index = row.rowIndex - 1;
 
         let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -143,16 +144,6 @@ table.addEventListener("change", (e) => {
     }
 
 });
-
-
-deleteBTN.addEventListener("click",()=>{
-
-  localStorage.removeItem("tasks");
-  row.remove()
-
-})
-
-
 
 
 
@@ -167,9 +158,30 @@ alert("Header Row Can not be Deleted");
 return
     } {
         table.deleteRow(tableRow.length-1)
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    tasks.pop();   // array এর last item remove
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 })
 
+
+deleteBTN.addEventListener("click",()=>{
+
+  localStorage.removeItem("tasks");
+ table.innerHTML = `
+    <tr>
+        <th>Name</th>
+        <th>Current Date</th>
+        <th>Work to be completed within</th>
+        <th>Tittle</th>
+        <th>Description</th>
+        <th>Marks As Completed</th>
+    </tr>
+  `;
+
+})
 </script>
 </body>
 </html>
